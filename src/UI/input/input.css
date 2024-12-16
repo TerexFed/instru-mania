@@ -1,0 +1,39 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50vw;
+}
+
+.input-container input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+
+  font-size: 16px;
+  font-weight: 400;
+  height: 50px;
+  width: 100%;
+  padding: 0 40px 0 10px;
+}
+
+.input-container i {
+  position: absolute;
+  right: 10px;
+  color: var(--main-color);
+  cursor: pointer;
+  transform: scale(1.5);
+}
+
+@media (width < 740px) {
+  ::placeholder {
+    font-size: 10px;
+  }
+  .input-container input {
+    font-size: 10px;
+  }
+  .input-container i{
+    transform: scale(1);
+  }
+}

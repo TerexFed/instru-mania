@@ -9,6 +9,9 @@ header {
   border-radius: 100%;
   background-color: var(--secondary-color);
 }
+.content {
+  width: 30vw;
+}
 .name {
   display: flex;
   align-items: center;
@@ -16,34 +19,24 @@ header {
   gap: 10px;
   cursor: pointer;
   border-radius: 5px;
+  justify-self: flex-end;
+  width: fit-content;
+  height: 50px;
 }
 
 .name i {
   color: var(--main-color);
 }
 
-dialog {
-  justify-self: right;
-  margin: 5px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  background: linear-gradient(
-    to top,
-    var(--main-color) 50%,
-    var(--secondary-color) 90%
-  );
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  left: 500px;
-}
-
-dialog i {
-  display: flex;
-  justify-self: end;
+.info-section {
+  opacity: 0;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
   padding: 5px;
-}
-.dialog-content {
-  padding: 10px;
+  text-align: right;
+  justify-self: flex-end;
+  margin-top: 5px;
 }
 
 @media (width < 740px) {

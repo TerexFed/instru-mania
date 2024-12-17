@@ -1,40 +1,41 @@
-import { useEffect, useRef } from "react";
 import anime from "animejs";
 import "./header.css";
+import { useState } from "react";
 
 export default function Header() {
-  const dialogRef = useRef(null);
-
+  const [isOpen, setIsOpen] = useState(true);
   const openDialog = () => {
-    dialogRef.current.showModal();
+    setIsOpen(false);
+    anime({
+      targets: ".info-section",
+      opacity: [0, 1],
+      duration: 500,
+      easing: "easeInOutSine",
+    });
   };
 
   const closeDialog = () => {
-    dialogRef.current.close();
-  };
-
-  useEffect(() => {
+    setIsOpen(true);
     anime({
-      targets: dialogRef.current,
-      translateY: [-100, 0], 
-      duration: 1000,
-      easing: 'cubicBezier(.5, .05, .3, .5)',
+      targets: ".info-section",
+      opacity: [1,0],
+      duration: 500,
+      easing: "cubicBezier(.5, .05, .3, .1)",
     });
-  }, []);
+  };
 
   return (
     <header>
       <div className="logo"></div>
-      <div className="name block" onClick={openDialog}>
-        <h3>ИнструМания</h3>
-        <i className="bi bi-info-circle-fill" style={{ scale: "1.2" }}></i>
-      </div>
-      <dialog ref={dialogRef}>
-        <i onClick={closeDialog} className="bi bi-x-octagon"></i>
-        <div className="dialog-content">
-          <h3>Информация про "ИнструМания"</h3>
+      <div className="content">
+        <div className="name block" onClick={isOpen ? openDialog : closeDialog}>
+          <h3>ИнструМания</h3>
+          <i className="bi bi-info-circle-fill" style={{ scale: "1.2" }}></i>
         </div>
-      </dialog>
+        <div className="info-section block">
+          <h4>Информация о сайте</h4>
+        </div>
+      </div>
     </header>
   );
 }

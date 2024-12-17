@@ -1,0 +1,34 @@
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 50%; /* Adjust width as needed */
+}
+select {
+  all: unset;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  width: 100%;
+  border-radius: 5px;
+  height: 50px;
+  font-size: 15px;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 5px;
+  cursor: pointer;
+}
+.select-container i {
+  position: absolute;
+  top: 35%;
+  right: 10px;
+  transform: rotate(0deg);
+  pointer-events: none;
+  color: var(--main-color);
+  transform: scale(2.5);
+  transition: transform 0.3s ease;
+}
+.select-container select:focus + i {
+  transition: 0.5s;
+  transform: rotate(90deg);
+}

@@ -19,13 +19,7 @@
 }
 
 body {
-  background: linear-gradient(
-    to bottom,
-    var(--main-color) 60%,
-    var(--secondary-color) 80%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: var(--main-color)
 }
 
 h1{

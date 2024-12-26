@@ -9,7 +9,7 @@ export default function Select({ options }: SelectProps) {
     <div className="select-container">
       <select>
         {options.map((option) => (
-          <option>{option}</option>
+          <option key={option}>{option}</option>
         ))}
       </select>
       <i className="bi bi-caret-down-fill" ></i>

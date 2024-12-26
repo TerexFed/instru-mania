@@ -1,14 +1,8 @@
 import { forwardRef } from "react";
 import "./input.css";
+import { InputProps } from "../../types";
 
-type InputProps = {
-  type: string;
-  isDisabled?: boolean;
-  value: string;
-  setValue: (val: string) => void;
-  onSubmit: () => void;
-  placeholder: string;
-};
+
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (

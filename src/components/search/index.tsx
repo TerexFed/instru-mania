@@ -2,32 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import Input from "../../UI/input";
 import "./search.css";
 import anime from "animejs";
-import Select from "../../UI/select";
-// import axios from "axios";
+import SearchResult from "../search-results";
+import { Products } from "../../types";
 
 export default function Search() {
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [filterInputValue, setFilterInputValue] = useState("");
+
+  const [results, setResults] = useState<Products>([]);
 
   const [showResults, setShowResults] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
   const inputRef = useRef(null);
-  const filterInputRef = useRef(null);
 
   function handleSearchSubmit() {
-    // axios.post(
-    //   "http://localhost:3000/search",
-    //   {
-    //     userInput: searchInputValue,
-    //   },
-    //   {
-    //     headers: {
-    //       Accept: "*/*",
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
     setIsDisabled(true);
 
     anime({
@@ -38,6 +26,29 @@ export default function Search() {
         setShowResults(true);
       },
     });
+
+    const eventSource = new EventSource(
+      `http://localhost:3000/search?userInput=${searchInputValue}`
+    );
+
+    eventSource.onmessage = (event) => {
+      const parsedData = JSON.parse(event.data);
+
+      if (parsedData.done) {
+        eventSource.close();
+      } else if (
+        parsedData.productName &&
+        parsedData.productPrice &&
+        parsedData.productLink
+      ) {
+        setResults((prevResults) => [...prevResults, parsedData]);
+      }
+    };
+
+    eventSource.onerror = (error) => {
+      console.error("EventSource error:", error);
+      eventSource.close();
+    };
   }
 
   useEffect(() => {
@@ -82,10 +93,6 @@ export default function Search() {
     }
   }, [showResults]);
 
-  function handleFilterSearchSubmit() {
-    console.log(filterInputValue);
-  }
-
   return (
     <main>
       {!showResults && (
@@ -116,36 +123,10 @@ export default function Search() {
       )}
 
       {showResults && (
-        <div className="search-result">
-          <div className="search-prompt block">
-            <h1>{searchInputValue}</h1>
-          </div>
-
-          <div className="result-section block">
-            <div className="guitar-image">
-              <p>Картинка</p>
-            </div>
-            <div className="result-content">
-              <div className="filters">
-                <Input
-                  type={"result-search"}
-                  ref={filterInputRef}
-                  value={filterInputValue}
-                  setValue={setFilterInputValue}
-                  onSubmit={handleFilterSearchSubmit}
-                  placeholder={""}
-                />
-                <Select options={["По возрастанию", "По убыванию"]} />
-              </div>
-              <div className="loading">
-                <h2>Loading</h2>
-                <i className="bi bi-slash-circle"></i>
-                <i className="bi bi-circle"></i>
-                <i className="bi bi-slash-circle"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SearchResult
+          searchInputValue={searchInputValue}
+          results={results}
+        ></SearchResult>
       )}
     </main>
   );

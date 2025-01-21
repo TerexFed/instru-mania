@@ -1,9 +1,11 @@
 import anime from "animejs";
 import "./header.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const openDialog = () => {
     setIsOpen(false);
     anime({
@@ -18,7 +20,7 @@ export default function Header() {
     setIsOpen(true);
     anime({
       targets: ".info-section",
-      opacity: [1,0],
+      opacity: [1, 0],
       duration: 500,
       easing: "cubicBezier(.5, .05, .3, .1)",
     });
@@ -27,6 +29,23 @@ export default function Header() {
   return (
     <header>
       <div className="logo"></div>
+      <div className="route-switch block">
+        <Link
+          to={"/ai-helper"}
+          onClick={() => setIsActive(true)}
+          className={isActive ? "link active" : "link"}
+        >
+          ИИ помощник
+        </Link>
+
+        <Link
+          to={"/search"}
+          onClick={() => setIsActive(false)}
+          className={!isActive ? "link active" : "link"}
+        >
+          Поиск
+        </Link>
+      </div>
       <div className="content">
         <div className="name block" onClick={isOpen ? openDialog : closeDialog}>
           <h3>ИнструМания</h3>

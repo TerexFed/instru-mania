@@ -3,7 +3,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 45px;
+  gap: 25px;
 }
 .search-tip {
   display: flex;
@@ -17,31 +17,7 @@ main {
   text-align: center;
   width: 50vw;
   gap: 15px;
+  text-shadow: var(--secondary-color) 0 4px 4px;
 }
 
-.search-result {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.search-prompt {
-  padding: 50px;
-  border-radius: 5px;
-  box-sizing: content-box;
-  width: 25vw;
-  text-align: center;
-  align-self: center;
-}
-
-.result-section {
-  display: flex;
-  gap: 10px;
-  border-radius: 5px;
-  padding: 10px;
-  height: 40vw;
-  width: 80vw;
-  margin-bottom: 5px;
-}
 

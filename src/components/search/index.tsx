@@ -60,7 +60,6 @@ export default function Search() {
         easing: "easeOutExpo",
         translateY: [150, 0],
       });
-
       anime({
         targets: ".loading i",
         opacity: [0.5, 1],
@@ -97,17 +96,11 @@ export default function Search() {
     <main>
       {!showResults && (
         <>
-          <div className="search-tip block">
+          <div className="search-tip">
             <h2>
               Введите модель музыкального инструмента, которого вы бы хотели
               найти
             </h2>
-            <sup>
-              Если не знаете что выбрать воспользуйтесь
-              <b>
-                <i> ИИ Помощником</i>
-              </b>
-            </sup>
           </div>
 
           <Input
@@ -125,6 +118,9 @@ export default function Search() {
       {showResults && (
         <SearchResult
           searchInputValue={searchInputValue}
+          setShowResults={setShowResults}
+          setIsDisabled={setIsDisabled}
+          setResults={setResults}
           results={results}
         ></SearchResult>
       )}

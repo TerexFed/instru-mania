@@ -5,9 +5,19 @@ import { Product, SearchResultProps } from "../../types";
 import "./search-results.css";
 import ReactPaginate from "react-paginate";
 
+import MuztorgLogo from "../../assets/shops-logo/muztorg.svg";
+import GuitarClub from "../../assets/shops-logo/guitar-club.svg";
+import SkifMusic from "../../assets/shops-logo/skifmusic.svg";
+import PopMusic from "../../assets/shops-logo/pop-music.svg";
+import JazzShop from "../../assets/shops-logo/jazz-shop.svg";
+import DjStore from "../../assets/shops-logo/djstore.svg";
+
 export default function SearchResult({
   searchInputValue,
   results,
+  setShowResults,
+  setIsDisabled,
+  setResults,
 }: SearchResultProps) {
   const [filterInputValue, setFilterInputValue] = useState("");
   const filterInputRef = useRef(null);
@@ -27,10 +37,44 @@ export default function SearchResult({
     setItemOffset(newOffset);
   };
 
+  function chooseShopLogo(website: string) {
+    switch (website) {
+      case "https://www.muztorg.ru":
+        return MuztorgLogo;
+
+      case "https://gitaraclub.ru":
+        return GuitarClub;
+
+      case "https://skifmusic.ru":
+        return SkifMusic;
+
+      case "https://pop-music.ru":
+        return PopMusic;
+
+      case "https://jazz-shop.ru":
+        return JazzShop;
+
+      case "https://www.dj-store.ru":
+        return DjStore;
+    }
+  }
+
   return (
     <div className="search-result">
-      <div className="search-prompt block">
+      <div className="search-prompt">
         <h1>{searchInputValue}</h1>
+        <div className="back-button">
+          <p
+            onClick={() => {
+              setShowResults(false);
+              setIsDisabled(false);
+              setResults([]);
+            }}
+          >
+            Назад
+          </p>
+          <i className="bi bi-box-arrow-in-left"></i>
+        </div>
       </div>
 
       <div className="result-section block">
@@ -47,7 +91,14 @@ export default function SearchResult({
               onSubmit={handleFilterSearchSubmit}
               placeholder={""}
             />
-            <Select options={["По возрастанию", "По убыванию"]} />
+            <div className="selects">
+              <Select options={["По возрастанию", "По убыванию"]} />
+              <Select
+                options={["Все магазины", ...Array.from(
+                  new Set(results.map((result) => result.website))
+                )]}
+              />
+            </div>
           </div>
           <div className="results-pagination">
             <div className="results">
@@ -60,27 +111,31 @@ export default function SearchResult({
                 </div>
               ) : (
                 currentItems.map((result: Product, index: number) => (
-                  <div key={index} className="result-item">
-                    <h3>{result.productName.toLocaleLowerCase()}</h3>
+                  <div
+                    key={index}
+                    className="result-item"
+                    onClick={() => window.open(result.productLink, "_blank")}
+                  >
+                    <img
+                      className="shop-logo"
+                      src={chooseShopLogo(result.website)}
+                      alt="123"
+                    />
+                    <h3 className="result-name">
+                      {result.productName.toLocaleLowerCase()}
+                    </h3>
                     <p>{result.productPrice}</p>
-                    <a
-                      href={result.productLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Product
-                    </a>
                   </div>
                 ))
               )}
             </div>
             <ReactPaginate
               breakLabel="..."
-              nextLabel=""
+              nextLabel="🢡"
               onPageChange={handlePageClick}
               pageRangeDisplayed={5}
               pageCount={pageCount}
-              previousLabel=""
+              previousLabel="🢠"
               renderOnZeroPageCount={null}
               containerClassName="pagination"
               activeClassName="active"

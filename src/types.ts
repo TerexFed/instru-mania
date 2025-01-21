@@ -1,7 +1,8 @@
 export type Product = {
-    productName: string;
-    productPrice: string;
-    productLink: string;
+  website: string;
+  productName: string;
+  productPrice: string;
+  productLink: string;
 };
 
 export type Products = Product[]
@@ -17,5 +18,8 @@ export type InputProps = {
 
 export type SearchResultProps = {
   searchInputValue: string;
-  results: Products
+  results: Products;
+  setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  setResults: React.Dispatch<React.SetStateAction<Products>>;
 }

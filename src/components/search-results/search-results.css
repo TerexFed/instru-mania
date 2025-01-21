@@ -1,3 +1,49 @@
+.search-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-prompt {
+  padding: 50px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+  align-self: center;
+  text-shadow: var(--secondary-color) 0 4px 4px;
+}
+.search-prompt > h1 {
+  transform: scale(1.5);
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.back-button:hover {
+  transform: scale(1.2);
+  transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.result-section {
+  display: flex;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  height: 40vw;
+  width: 80vw;
+  margin-bottom: 5px;
+}
+
 .guitar-image {
   display: flex;
   align-items: center;
@@ -19,16 +65,25 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 10px;
-  gap: 10px;
+  padding: 15px;
+  gap: 15px;
 }
 .filters .input-container {
   width: 100%;
+}
+.selects{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 10px;
+  gap: 30px;
 }
 .results {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  justify-items: center;
   padding: 0 10px 0 10px;
 }
 .results-pagination {
@@ -38,17 +93,38 @@
   height: 70%;
 }
 .result-item {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly;
   box-sizing: content-box;
   border-radius: 5px;
-  width: 260px;
-  height: 150px;
+  width: 15vw;
+  height: 180px;
   text-align: center;
   background-color: var(--secondary-color);
   padding: 5px;
+  
+}
+.result-item:hover {
+  transform: scale(1.03);
+  transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.result-name {
+  max-height: 56px;
+  overflow-y: scroll;
+}
+.result-item ::-webkit-scrollbar {
+  width: 5px;
+}
+.result-item ::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+  border-radius: 5px;
+}
+.shop-logo {
+  width: 50px;
+  height: 50px;
 }
 .loading {
   display: flex;
@@ -73,7 +149,7 @@ li {
   list-style: none;
   cursor: pointer;
 }
-li:hover{
+li:hover {
   transition: 0.1s;
   transform: scale(1.1);
 }

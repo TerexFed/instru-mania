@@ -19,10 +19,10 @@
 }
 
 body {
-  background: var(--main-color)
+  background: var(--main-color);
 }
 
-h1{
+h1 {
   font-size: 40px;
 }
 
@@ -35,12 +35,16 @@ h3 {
   font-weight: 600;
 }
 
-@media (width < 740px) {
-  h2 {
-    font-size: 15px;
-  }
-  h3 {
-    font-size: 10px;
-  }
-  
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--text-color);
 }

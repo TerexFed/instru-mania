@@ -12,7 +12,8 @@ select {
   width: 100%;
   border-radius: 5px;
   height: 50px;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 500;
   align-items: center;
   background-color: var(--secondary-color);
   padding: 5px;
@@ -31,4 +32,7 @@ select {
 .select-container select:focus + i {
   transition: 0.5s;
   transform: rotate(90deg);
+}
+option {
+  font-weight: 500;
 }

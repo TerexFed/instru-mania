@@ -36,8 +36,7 @@
   position: absolute;
   z-index: 1;
   top: 15%;
-  left: 10%;
-  width: 80vw;
+  width: 90vw;
   display: flex;
   height: 80%;
   background-color: var(--secondary-color);

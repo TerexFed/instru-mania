@@ -30,7 +30,7 @@
 }
 @media (width < 1330px) {
   .input-container {
-    width: 90vw;
+    width: 80vw;
   }
 }
 @media (width < 770px) {

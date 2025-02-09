@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import Input from "../../UI/input";
 import "./search.css";
 import anime from "animejs";
-import SearchResult from "../search-results";
+import SearchResult from "../../components/search-results";
 import { Products } from "../../types";
 
-export default function Search() {
+export default function SearchPage() {
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const [results, setResults] = useState<Products>([]);
@@ -42,6 +42,7 @@ export default function Search() {
         parsedData.productLink
       ) {
         setResults((prevResults) => [...prevResults, parsedData]);
+        console.log(results)
       }
     };
 
@@ -75,7 +76,7 @@ export default function Search() {
           { translateX: -40, translateY: -40 },
           { translateX: 0, translateY: 0 },
         ],
-        scale: function (el: unknown, i: number, l: number) {
+        scale: function (_el: unknown, i: number, l: number) {
           return l - i + 0.25;
         },
         rotate: function () {

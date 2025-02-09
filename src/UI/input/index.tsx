@@ -2,8 +2,6 @@ import { forwardRef } from "react";
 import "./input.css";
 import { InputProps } from "../../types";
 
-
-
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     { type, value, setValue, onSubmit, placeholder, isDisabled }: InputProps,
@@ -33,6 +31,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               ? "bi bi-send-fill"
               : type === "result-search"
               ? "bi bi-search"
+              : type === "ai-search"
+              ? "bi bi-binoculars"
               : ""
           }
           onClick={Send}

@@ -1,11 +1,12 @@
 import anime from "animejs";
 import "./header.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(true);
   const [isActive, setIsActive] = useState(false);
+  const location = useLocation();
   const openDialog = () => {
     setIsOpen(false);
     anime({
@@ -26,23 +27,21 @@ export default function Header() {
     });
   };
 
+  useEffect(() => {
+    return location.pathname === "/ai-helper"
+      ? setIsActive(true)
+      : setIsActive(false);
+  }, [location.pathname]);
+
   return (
     <header>
       <div className="logo"></div>
       <div className="route-switch block">
-        <Link
-          to={"/ai-helper"}
-          onClick={() => setIsActive(true)}
-          className={isActive ? "link active" : "link"}
-        >
+        <Link to={"/ai-helper"} className={isActive ? "link active" : "link"}>
           ИИ помощник
         </Link>
 
-        <Link
-          to={"/search"}
-          onClick={() => setIsActive(false)}
-          className={!isActive ? "link active" : "link"}
-        >
+        <Link to={"/search"} className={!isActive ? "link active" : "link"}>
           Поиск
         </Link>
       </div>

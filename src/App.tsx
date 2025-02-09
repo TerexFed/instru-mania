@@ -1,9 +1,10 @@
 import "./global.css";
 
-import Search from "./components/search";
+
 import Header from "./components/header";
 import { Navigate, Route, Routes } from "react-router-dom";
-import AiHelper from "./components/ai-helper";
+import AiHelper from "./pages/aiHelperPage";
+import SearchPage from "./pages/searchPage";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/search" replace={true} />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/ai-helper" element={<AiHelper />} />
       </Routes>
     </>

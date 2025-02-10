@@ -38,11 +38,27 @@
   top: 15%;
   width: 90vw;
   display: flex;
+  flex-direction: column;
   height: 80%;
+  border-radius: 5px 5px 0 0;
   background-color: var(--secondary-color);
   opacity: 0;
   transform: scale(0.9);
+  padding: 20px;
+}
+.search-result-scroll{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: scroll;
+  max-height: 60vh;
+}
+
+.user-prompt{
+  border-radius: 5px;
+  width: fit-content;
   padding: 10px;
+  background-color: var(--main-color);
 }
 
 @media (width < 1230px) {
@@ -50,13 +66,17 @@
     text-wrap: wrap;
     text-align: center;
   }
- 
+  .ai-search-tips {
+    width: 80vw;
+  }
 }
+
 @media (width < 450px) {
   .ai-search-result{
     height: 60%;
   }
   .ai-search-tip{
-    font-size: 8px;
+    text-wrap: wrap;
+    font-size: 10px;
   }
 }

@@ -40,7 +40,4 @@
   ::placeholder {
     font-size: 16px;
   }
-  .input-container i {
-    transform: scale(2);
-  }
 }

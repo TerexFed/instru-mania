@@ -39,7 +39,6 @@
   gap: 10px;
   border-radius: 5px;
   padding: 10px;
-  height: 40vw;
   width: 80vw;
   margin-bottom: 5px;
 }
@@ -50,7 +49,6 @@
   justify-content: center;
   border-radius: 5px;
   width: 30%;
-  height: 100%;
   background-color: var(--main-color);
 }
 .result-content {
@@ -65,13 +63,13 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 15px;
+  padding: 10px;
   gap: 15px;
 }
 .filters .input-container {
   width: 100%;
 }
-.selects{
+.selects {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -84,7 +82,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   justify-items: center;
-  padding: 0 10px 0 10px;
+  padding: 0 15px 0 15px;
 }
 .results-pagination {
   display: flex;
@@ -100,12 +98,11 @@
   justify-content: space-evenly;
   box-sizing: content-box;
   border-radius: 5px;
-  width: 15vw;
+  width: 100%;
   height: 180px;
   text-align: center;
   background-color: var(--secondary-color);
   padding: 5px;
-  
 }
 .result-item:hover {
   transform: scale(1.03);
@@ -134,13 +131,14 @@
   gap: 10px;
 }
 ul {
-  font-size: 36px;
-  font-weight: 400;
-  line-height: 45px;
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin: 20px 0 20px 0;
   align-items: end;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 45px;
 }
 .active > a {
   color: var(--secondary-color);
@@ -152,4 +150,29 @@ li {
 li:hover {
   transition: 0.1s;
   transform: scale(1.1);
+}
+@media (width < 1030px) {
+  .result-section {
+    width: 90vw;
+    flex-direction: column;
+    align-items: center;
+  }
+  .result-content {
+    width: 85vw;
+    margin: 20px;
+  }
+  .guitar-image{
+    height: 50vh;
+    width: 85vw;
+  }
+}
+@media (width < 775px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (width < 550px) {
+  .results {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

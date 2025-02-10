@@ -80,7 +80,7 @@ export default function SearchResult({
       <div className="result-section block">
         <div className="guitar-image">
           <p>Картинка</p>
-        </div>
+        </div>        
         <div className="result-content">
           <div className="filters">
             <Input
@@ -94,9 +94,12 @@ export default function SearchResult({
             <div className="selects">
               <Select options={["По возрастанию", "По убыванию"]} />
               <Select
-                options={["Все магазины", ...Array.from(
-                  new Set(results.map((result) => result.website))
-                )]}
+                options={[
+                  "Все магазины",
+                  ...Array.from(
+                    new Set(results.map((result) => result.website))
+                  ),
+                ]}
               />
             </div>
           </div>

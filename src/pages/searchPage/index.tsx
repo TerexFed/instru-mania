@@ -57,8 +57,8 @@ export default function SearchPage() {
       anime({
         targets: ".search-result",
         opacity: [0, 1],
-        duration: 1500,
-        easing: "easeOutExpo",
+        duration: 1000,
+        easing: "easeOutQuad",
         translateY: [150, 0],
       });
       anime({

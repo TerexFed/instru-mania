@@ -67,7 +67,7 @@ export default function AiHelperPage() {
     <main>
       <div className="ai-search-part">
         <div className="search-tip">
-          <h2>Спросите любой вопрос про музыкальные инструменты у ии</h2>
+          <h2>Спросите любой вопрос про музыкальные инструменты у ИИ</h2>
         </div>
 
         <div className="ai-search">
@@ -95,9 +95,11 @@ export default function AiHelperPage() {
 
         {
           <div ref={resultRef} className="ai-search-result">
-            {Messages.map((message) => {
-              return <div className="user-prompt">{message}</div>;
-            })}
+            <div className="search-result-scroll">
+              {Messages.map((message) => {
+                return <div className="user-prompt">{message}</div>;
+              })}
+            </div>
           </div>
         }
       </div>
